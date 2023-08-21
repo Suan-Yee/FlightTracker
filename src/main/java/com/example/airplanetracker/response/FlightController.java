@@ -1,5 +1,6 @@
 package com.example.airplanetracker.response;
 
+import com.example.airplanetracker.dto.FlightDto;
 import com.example.airplanetracker.entity.Flight;
 import com.example.airplanetracker.entity.Response;
 import com.example.airplanetracker.service.FlightService;
@@ -20,14 +21,14 @@ public class FlightController {
     private FlightService flightService;
 
     @PostMapping("save")
-    public ResponseEntity<Response> saveFlight(@RequestBody Flight flight){
+    public ResponseEntity<Response> saveFlight(@RequestBody FlightDto flightDto){
         return ResponseEntity.ok(
                 Response.builder()
                         .timestamp(LocalDateTime.now())
                         .httpStatus(HttpStatus.CREATED)
                         .StatusCode(HttpStatus.CREATED.value())
                         .message("Saving new flight")
-                        .data(Map.of("Saving",flightService.addFlight(flight)))
+                        .data(Map.of("Saving",flightService.addFlight(flightDto)))
                         .build()
         );
     }

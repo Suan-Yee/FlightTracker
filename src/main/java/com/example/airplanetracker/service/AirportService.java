@@ -1,10 +1,11 @@
 package com.example.airplanetracker.service;
 
+import com.example.airplanetracker.dto.AirportDto;
 import com.example.airplanetracker.entity.Airport;
 
 public interface AirportService {
 
-    Airport addAirport(Airport airport);
+    AirportDto addAirport(AirportDto airportDto);
 
-    Airport findAirportByLocation(String location);
+    AirportDto findAirportByLocation(String location);
 }

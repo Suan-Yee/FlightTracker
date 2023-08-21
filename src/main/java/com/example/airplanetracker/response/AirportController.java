@@ -1,5 +1,6 @@
 package com.example.airplanetracker.response;
 
+import com.example.airplanetracker.dto.AirportDto;
 import com.example.airplanetracker.entity.Airport;
 import com.example.airplanetracker.entity.Response;
 import com.example.airplanetracker.service.AirportService;
@@ -20,14 +21,14 @@ public class AirportController {
     private AirportService airportService;
 
     @PostMapping("save")
-    public ResponseEntity<Response> saveAirport(@RequestBody Airport airport){
+    public ResponseEntity<Response> saveAirport(@RequestBody AirportDto airportdto){
         return ResponseEntity.ok(
                 Response.builder()
                         .timestamp(LocalDateTime.now())
                         .httpStatus(HttpStatus.CREATED)
                         .StatusCode(HttpStatus.CREATED.value())
                         .message("Saving new Airport")
-                        .data(Map.of("Saving",airportService.addAirport(airport)))
+                        .data(Map.of("Saving",airportService.addAirport(airportdto)))
                         .build()
         );
     }
